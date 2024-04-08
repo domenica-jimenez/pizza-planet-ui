@@ -12,8 +12,8 @@ function postOrder(order) {
             "Content-Type": "application/json; charset=utf-8",
         },
     })
-        .then(res => res.json())
-        .then(res => showNotification());
+        .then(res =>  res.status)
+        .then(status => showNotification(status));
 
 
 }
@@ -53,8 +53,8 @@ function getOrderData() {
 /**
  * Shows a notification when the order is accepted
  */
-function showNotification() {
-    let orderAlert = $("#order-alert");
+function showNotification(status) {
+    let orderAlert = status === 200 ? $("#order-alert-success") : $("#order-alert-failure");
     orderAlert.toggle();
     setTimeout(() => orderAlert.toggle(), 5000);
 }
