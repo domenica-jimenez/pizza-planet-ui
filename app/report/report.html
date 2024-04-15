@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="/css/styles.css" />
 
-    <title>L'ultima Cena Pizzeria! - Beverage</title>
+    <title>L'ultima Cena Pizzeria! - Report</title>
   </head>
 
   <body>
@@ -52,48 +52,79 @@
       </nav>
     </header>
 
-    <!-- TABLE -->
+    <!-- TABLES -->
 
     <div class="container">
       <div class="jumbotron">
-        <div id="beverage-list">
-          <h2 class="text-center">Beverages</h2>
-          <table id="beverages" class="table bg-white table-bordered table-hover">
+        <div id="report">
+          <h2 class="text-center">Report</h2>
+          <hr />
+          <h3 class="text-center">Best Customers</h3>
+          <table id="report-best-customer" class="table bg-white table-bordered table-hover">
             <thead class="thead-dark">
               <tr class="d-flex">
-                <th class="col-2 text-center">ID</th>
-                <th class="col-4 text-center">Name</th>
-                <th class="col-3 text-center">Price</th>
-                <th class="col-3 text-center">Actions</th>
+                <th class="col-2 text-center">DNI</th>
+                <th class="col-2 text-center">Name</th>
+                <th class="col-2 text-center">Phone</th>
+                <th class="col-4 text-center">Address</th>
+                <th class="col-2 text-center">Amount spent</th>
               </tr>
             </thead>
             <tbody></tbody>
           </table>
-        </div>
-
-        <div class="text-center">
-          <a class="btn btn-warning btn-lg add-beverage" href="/app/beverage/add-beverage.html"
-            >Add New Beverage</a
-          >
+          <h3 class="text-center">Most Required Ingredient</h3>
+          <table id="reports-most-required-ingredient" class="table bg-white table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr class="d-flex">
+                <th class="col-2 text-center">ID</th>
+                <th class="col-5 text-center">Name</th>
+                <th class="col-3 text-center">Price</th>
+                <th class="col-2 text-center">Times required</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <h3 class="text-center">Most Revenue Month</h3>
+            <table id="reports-most-revenue-month" class="table bg-white table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr class="d-flex">
+                  <th class="col-6 text-center">Month</th>
+                  <th class="col-6 text-center">Revenue</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
         </div>
       </div>
     </div>
 
-    <template id="beverage-item-template">
+    <!-- Best customer -->
+    <template id="report-best-customer-item-template">
       <tr class="d-flex">
-        <td class="col-2 text-center">{{_id}}</td>
-        <td class="col-4">{{name}}</td>
-        <td class="col-3">${{price}}</td>
-        <td class="col-3 text-center">
-          <div class="text-center">
-            <a
-              class="btn btn-success btn-sm update-beverage"
-              href="/app/beverage/update-beverage.html?_id={{_id}}"
-              >Update</a
-            >
-          </div>
-        </td>
+        <td class="col-2 text-center">{{client_dni}}</td>
+        <td class="col-2">{{client_name}}</td>
+        <td class="col-2">{{client_phone}}</td>
+        <td class="col-4">{{client_address}}</td>
+        <td class="col-2 text-center">${{amount_spent}}</td>
       </tr>
+    </template>
+
+    <!-- Most required ingredient -->
+    <template id="report-most-required-ingredient-item-template">
+        <tr class="d-flex">
+            <td class="col-2 text-center">{{_id}}</td>
+            <td class="col-5 text-center">{{name}}</td>
+            <td class="col-3 text-center">${{price}}</td>
+            <td class="col-2 text-center">{{times_required}}</td>
+        </tr>
+    </template>
+
+        <!-- Most revenue month -->
+    <template id="report-most-revenue-month-item-template">
+        <tr class="d-flex">
+            <td class="col-6 text-center">{{month}}</td>
+            <td class="col-6 text-center">${{revenue}}</td>
+        </tr>
     </template>
 
     <!-- Optional JavaScript -->
@@ -119,6 +150,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="/js/beverage/beverage.js"></script>
+    <script src="/js/report/report.js"></script>
   </body>
 </html>
