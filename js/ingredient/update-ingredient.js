@@ -17,10 +17,11 @@ function loadInformation() {
 }
 
 function putIngredient(ingredient) {
-
-    fetch('http://127.0.0.1:5000/ingredient/', {
+    data = JSON.stringify(ingredient);
+    delete data._id;
+    fetch(`http://127.0.0.1:5000/ingredient/${ingredient._id}`, {
         method: 'PUT',
-        body: JSON.stringify(ingredient),
+        body: data,
         headers: {
             "Content-Type": "application/json; charset=utf-8",
         },

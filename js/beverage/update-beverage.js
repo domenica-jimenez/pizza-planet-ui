@@ -10,17 +10,18 @@ function fetchBeverage(_id) {
         });
 }
 
-function loadInformation() {
+function loadBeverage() {
     let urlParams = new URLSearchParams(window.location.search);
     let _id = urlParams.get('_id');
     fetchBeverage(_id)
 }
 
 function putBeverage(beverage) {
-
-    fetch('http://127.0.0.1:5000/beverage/', {
+    data = JSON.stringify(beverage);
+    delete data._id;
+    fetch(`http://127.0.0.1:5000/beverage/${beverage._id}`, {
         method: 'PUT',
-        body: JSON.stringify(beverage),
+        body: data,
         headers: {
             "Content-Type": "application/json; charset=utf-8",
         },
@@ -66,4 +67,4 @@ function showNotification() {
 }
 
 
-window.onload = loadInformation;
+window.onload = loadBeverage;
